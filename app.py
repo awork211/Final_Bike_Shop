@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
     return render_template('Main-Page.html')
 
-@app.route("/registration")
+@app.route("/register")
 def register():
     return render_template('Registration.html')
 
@@ -15,4 +15,4 @@ def login():
     return render_template('Login.html')
 
 if __name__ == '__main__':
-    app.run(Debug=True)
+    app.run(debug=True)
