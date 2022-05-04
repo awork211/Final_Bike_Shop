@@ -28,12 +28,10 @@ cur = conn.cursor()
 pr_key = RSA.import_key(open('private.pem', 'r').read())
 pu_key = RSA.import_key(open('public.pem', 'r').read())
 
-# encrypt message
+# encrypt obj
 cipher = PKCS1_OAEP.new(key=pu_key)
-# cipher_text = cipher.encrypt(message)
 
 # decrypt message
-decrypt = PKCS1_OAEP.new(key=pr_key)
 # decrypted_message = decrypt.decrypt(cipher_text)
 @app.route("/")
 def index():
@@ -43,17 +41,19 @@ def index():
 def register():
     if request.method == 'POST':
         user = request.form['user']
-        # password = request.form['pasw']
+        password = request.form['pasw']
         email = request.form['email']
         phone = request.form['phone']
         address = request.form['address']
-        print(email, user, phone, address)
+
+        enc_pass = cipher.encrypt(bytes(password, 'utf-8'))
+        print(email, user, phone, address, enc_pass)
         # insert into db table
         sql = """
-            INSERT INTO user_info (email, username, phone, address)
-            VALUES (%s, %s, %s, %s)
+            INSERT INTO user_info (email, username, password, phone, address)
+            VALUES (%s, %s, %s, %s, %s)
         """
-        args = email, user, phone, address
+        args = email, user, enc_pass, phone, address
 
         cur.execute(sql, args)
         conn.commit()
@@ -62,6 +62,7 @@ def register():
 
 @app.route("/login")
 def login():
+    # decrypt = PKCS1_OAEP.new(key=pr_key)
     return render_template('Login.html')
 
 
