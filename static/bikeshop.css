@@ -53,12 +53,15 @@ ul li a {
 #itemIn {
     display: grid;
     grid-template-columns: auto auto;
+    column-gap: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
   }
-
-
 
 #item {
     border: 2px solid black;
+    margin: 0;
     width: 200px;
     height: 200px;
 }
