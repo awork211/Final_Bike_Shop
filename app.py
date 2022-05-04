@@ -4,12 +4,12 @@ from flask import Flask, render_template, request, url_for, redirect
 app = Flask(__name__)
 
 # connect database
-conn = psycopg2.connect(
-    host = 'localhost',
-    database = 'user_info'
-)
+# conn = psycopg2.connect(
+#     host = 'localhost',
+#     database = 'user_info'
+# )
 
-cur = conn.cursor()
+# cur = conn.cursor()
 
 # cur.execute("""
 # CREATE TABLE user_info (
@@ -24,25 +24,25 @@ cur = conn.cursor()
 
 @app.route("/")
 def index():
-    return render_template('Main-Page.html')
+    return render_template('Purchase.html')
 
-@app.route("/register", methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        email = request.form['email']
-        user = request.form['user']
-        password = request.form['pasw']
-        phone = request.form['phone']
-        address = request.form['address']
-    return render_template('Registration.html')
+# @app.route("/register", methods=['GET', 'POST'])
+# def register():
+#     if request.method == 'POST':
+#         email = request.form['email']
+#         user = request.form['user']
+#         password = request.form['pasw']
+#         phone = request.form['phone']
+#         address = request.form['address']
+#     return render_template('Registration.html')
 
-@app.route("/login")
-def login():
-    return render_template('Login.html')
+# @app.route("/login")
+# def login():
+#     return render_template('Login.html')
 
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-cur.close()
-conn.close()
+# cur.close()
+# conn.close()

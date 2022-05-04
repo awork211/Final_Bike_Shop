@@ -12,6 +12,28 @@ body {
 p {
     font-size: 20px;
 }
+header {
+    width: 100%;
+    border: 2px solid black;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    text-align: center;
+  }
+
+ul li {
+    display: inline;
+    padding: 10px;
+    font-size: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+}
 
 #logBox {
     text-align: center;
@@ -26,4 +48,22 @@ p {
 
 #lastBox {
     margin-bottom: 15px;
+}
+
+#itemIn {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+
+
+#item {
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+}
+
+.itemImg {
+    width: 200px;
+    height: 200px;
 }
