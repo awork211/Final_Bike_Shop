@@ -35,7 +35,7 @@ cipher = PKCS1_OAEP.new(key=pu_key)
 # decrypted_message = decrypt.decrypt(cipher_text)
 @app.route("/")
 def index():
-    return render_template('Purchase.html')
+    return render_template('Login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
