@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('Purchase.html')
+    return render_template('Login.html')
 
 # @app.route("/register", methods=['GET', 'POST'])
 # def register():
