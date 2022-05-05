@@ -84,6 +84,7 @@ def login():
 
     return render_template('Login.html')
 
+
 @app.route("/login/<message>")
 def logSuccess(message):
     return render_template('Login.html', message = message)
