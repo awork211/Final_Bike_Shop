@@ -36,7 +36,7 @@ app = Flask(__name__)
 # decrypted_message = decrypt.decrypt(cipher_text)
 @app.route("/")
 def index():
-    return render_template('Purchase.html')
+    return render_template('Main-Page.html')
 
 # @app.route("/register", methods=['GET', 'POST'])
 # def register():
