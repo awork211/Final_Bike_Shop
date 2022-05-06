@@ -34,7 +34,7 @@ decrypt = PKCS1_OAEP.new(key=pr_key)
 
 @app.route("/")
 def index():
-    return render_template('Main-Page.html')
+    return render_template('Purchase.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
