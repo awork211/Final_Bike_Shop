@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="Main_Page.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Main_Page.css') }}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 </head>
 <body>
     <center>
-    <img src="../Harajuku_Final.jpeg" height="300px", width="750">
+    <img src="../static/images/Harajuku_Final.jpeg" height="300px", width="750">
     </center>
     <br>
     <header>
@@ -37,7 +37,7 @@
         <div class = 'sword'>
             <div class = 'lance'>
                 <h4>Peak Design Bike #1</h4>
-                <img src="../peak_design_custom.jpg" class = 'tired'>
+                <img src="../static/images/peak_design_custom.jpg" class = 'tired'>
                 <br>
                 <h3><em>Exclusive to our store</em></h3>
                 <ul>
@@ -54,7 +54,7 @@
             <div class = 'sword'>
                 <div class = 'lance'>
                     <h3>Custom Bike #5</h3>
-                    <img src="../new_bicycle.jpg" class = "tired">
+                    <img src="../static/images/new_bicycle.jpg" class = "tired">
                     <br>
                     <h4><em>Exclusive to our store</em></h4>
                     <ul>
