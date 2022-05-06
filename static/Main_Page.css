@@ -41,14 +41,15 @@ text-align: center;
 {
     display: flex;
 	flex-direction: row;
-	justify-content: space-evenly
+	/* justify-content: space-evenly */
+	margin-right: 20%;
 }
 .tired
 {
-	object-fit: cover;
 	height: 370px;
-	width: 575px;
+	width: 60%;
 }
+
 .sword
 {
     border: 2px solid black;
@@ -58,23 +59,26 @@ text-align: center;
 	border-spacing: 10px;
 	padding-top: 2vh;
 	margin-bottom: 35px;
-
-	display: block;
-	justify-content: start;
+	display: flex;
 	gap: 2vh;
-	flex-flow: column nowrap;
-	align-items: center;
+	flex: 50%;
+	flex-flow: wrap;
 	width: 45%;
 	height: 45%;
+	margin-left: auto;
+	margin-right: auto;
 }
+
 .lance
 {
+	margin-left: auto;
+	margin-right: auto;
     display: flex;
-	justify-content: start;
 	gap: 0.5vh;
-	flex-flow: column nowrap;
+	flex: 50%;
+	flex-flow: column wrap;
 	align-items: center;
-	width: 100%;
+	width: 75%;
 	height: 100%;
 }
 .practise
@@ -89,7 +93,17 @@ text-align: center;
 	cursor: pointer;
     border-radius: 16px;
 }
+
 body, html{
     font-family: 'Lora', serif;
    height: 100%; 
+}
+
+
+.contaner{
+	width:	80%;
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	flex-direction: row;
 }
