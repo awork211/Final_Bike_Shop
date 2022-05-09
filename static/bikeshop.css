@@ -1,7 +1,3 @@
-body {
-    background-color: aqua;
-}
-
 #bgImageLog {
     padding: 0;
     background-image: url("../images/3340176.jpg");
@@ -12,16 +8,25 @@ body {
 p {
     font-size: 20px;
 }
+
 header {
     width: 100%;
-    border: 2px solid black;
+    border: solid black 2px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+footer {
+    width: 100%;
+    border: solid black 2px;
+    border-radius: 30px;
+    text-align: center;
 }
 
 ul {
     list-style-type: none;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid black;
     text-align: center;
   }
 
@@ -51,22 +56,26 @@ ul li a {
 }
 
 #itemIn {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: auto auto;
     column-gap: 0px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid black;
   }
 
 #item {
+    background-color: rgb(96, 101, 105);
     border: 2px solid black;
-    margin: 0;
-    width: 200px;
-    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 350px;
 }
 
 .itemImg {
-    width: 200px;
+    width: 300px;
     height: 200px;
 }
