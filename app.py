@@ -71,7 +71,9 @@ def login():
         cur.execute("""
             SELECT username, password FROM user_info WHERE username = %s
         """, [user])
+        
         query = cur.fetchone()
+        print(type(query))
         bytePass = query[1].tobytes()
         finalPass = decrypt.decrypt(bytePass)
         # test password
