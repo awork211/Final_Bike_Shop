@@ -93,7 +93,39 @@ text-align: center;
 	cursor: pointer;
     border-radius: 16px;
 }
-
+.knight_armour
+{
+	float: left;
+	width: 25%;
+	padding: 0 -5px;
+	text-align: center;
+}
+.knight_shield
+{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.5);
+	padding: 16px;
+	margin-left: 8px;
+	
+}
+.the_heroes
+{
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../Bike_Background.jpg);
+height: 500px;
+width: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+color: white;
+font-size: larger;
+}
+footer{
+	background-color: black;
+	color: white;
+}
+ion-icon{
+font-size: 30px;
+}
 body, html{
     font-family: 'Lora', serif;
    height: 100%; 
