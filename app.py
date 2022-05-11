@@ -86,7 +86,7 @@ def register():
         conn.commit()
         return redirect(url_for('logMessage', message = 'New Account Created!'))
 
-#     return render_template('Registration.html')
+    return render_template('Registration.html')
 
 @app.route("/login", methods=["GET","POST"])
 def login():
