@@ -32,15 +32,12 @@ pu_key = RSA.import_key(open('public.pem', 'r').read())
 # encrypt/decrypt obj
 cipher = PKCS1_OAEP.new(key=pu_key)
 decrypt = PKCS1_OAEP.new(key=pr_key)
-
-regTest = r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
-str = 'Play1!'
                                                                                                                                         
 
 # decrypt message
 @app.route("/")
 def index():
-    return render_template('Main-Page.html')
+    return render_template('Purchase.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -66,7 +63,7 @@ def register():
         else:
             print('No digit')
 
-        # insert into db table
+#         # insert into db table
         sql = """
             INSERT INTO user_info (email, username, password, phone, address)
             VALUES (%s, %s, %s, %s, %s)
@@ -77,7 +74,7 @@ def register():
         conn.commit()
         return redirect(url_for('logMessage', message = 'New Account Created!'))
 
-    return render_template('Registration.html')
+#     return render_template('Registration.html')
 
 @app.route("/login", methods=["GET","POST"])
 def login():
@@ -86,10 +83,7 @@ def login():
         user = request.form['user']
         password = request.form['pasw']
 
-        # if re.match(regTest, password):
-        #     print("Passed Test")
-        # else:
-        #     print("Didn't Pass Test")
+        
 
 
 
@@ -121,7 +115,7 @@ def login():
             print('User does not exist.')
             return redirect(url_for('logMessage', message = 'User does not exist'))
 
-    return render_template('Login.html')
+#     return render_template('Login.html')
 
 
 @app.route("/login/<message>")
