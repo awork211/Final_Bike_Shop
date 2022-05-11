@@ -16,13 +16,17 @@
             <input type="text" name="user" class= "Hero" required>
             <br>
             <p>Create a Password:</p>
-            <input type="password" name="pasw" id="lastBox" class= "Hero" required>
+            <label for=""><em>Must contain 8 characters with one number, and one special character</em></label>
+            <br>
+            {% if password %}
+            <input type="password" name="pasw" id="lastBox" class= "Hero" value="{{ password }}" required>
+            {% endif %}
             <br>
             <p>Enter a Phone Number:</p>
             <input type="text" name="phone" id="lastBox" class= "Hero">
             <br>
             <p>Email Address:</p>
-            <input type="text" name="email" id="lastBox" class= "Hero" required>
+            <input type="email" name="email" id="lastBox" class= "Hero" required>
             <br>
             <p>Enter your Address:</p>
             <input type="text" name="address" id="lastBox" class= "Hero" required>
