@@ -19,7 +19,7 @@ padding: 10px;
 }
 .heroes
 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../bike_shop_demo.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/bike_shop_demo.jpg);
     height: 350px;
     width: 100%;
     background-position: center;
