@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
 
 body {
-    background-color: aqua;
-    background-image: url(../wallpapersden.com_cool-4k-pattern_3840x2160.jpg);
+    background-image: url(../static/images/wallpapersden.com_cool-4k-pattern_3840x2160.jpg);
     background-size: cover;
 }
 
@@ -10,7 +9,7 @@ p {
     font-size: 25px;
 }
 
-#logBox {
+#regBox {
     text-align: center;
     padding: 15px;
     margin-left: auto;
@@ -26,7 +25,8 @@ p {
 #lastBox {
     margin-bottom: 15px;
 }
-.Hero{
+
+.Hero {
     border: 2px 4px;
 	color: black;
 	padding: 10px 20px;
