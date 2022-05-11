@@ -37,7 +37,19 @@ decrypt = PKCS1_OAEP.new(key=pr_key)
 # decrypt message
 @app.route("/")
 def index():
-    return render_template('admin.html')
+    return render_template('Main-Page.html')
+
+@app.route("/purchase")
+def purchase():
+    return render_template('Purchase.html')
+
+@app.route("/parts")
+def parts():
+    return render_template('Parts-Page.html')
+
+@app.route("/customize")
+def customize():
+    return render_template("Customised-Bikes.html")
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -74,7 +86,7 @@ def register():
         conn.commit()
         return redirect(url_for('logMessage', message = 'New Account Created!'))
 
-#     return render_template('Registration.html')
+    return render_template('Registration.html')
 
 @app.route("/login", methods=["GET","POST"])
 def login():
