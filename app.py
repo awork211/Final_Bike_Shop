@@ -1,4 +1,5 @@
 import psycopg2
+import re
 from flask import Flask, render_template, request, url_for, redirect
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
@@ -32,6 +33,10 @@ pu_key = RSA.import_key(open('public.pem', 'r').read())
 cipher = PKCS1_OAEP.new(key=pu_key)
 decrypt = PKCS1_OAEP.new(key=pr_key)
 
+regTest = r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+str = 'Play1!'
+                                                                                                                                        
+
 # decrypt message
 @app.route("/")
 def index():
@@ -47,7 +52,19 @@ def register():
         address = request.form['address']
 
         enc_pass = cipher.encrypt(bytes(password, 'utf-8'))
-        
+
+        if re.search(r'\d', password):
+            print('Has digit')
+            if re.search(r'[A-Z]', password):
+                print('Has upper')
+            else:
+                return redirect(url_for('logMessage', password = password, message = 'No upper'))
+            if re.search(r'[!@#$%^&+=]', password):
+                print('Has symbol')
+            else:
+                print('no symbol')
+        else:
+            print('No digit')
 
         # insert into db table
         sql = """
@@ -58,7 +75,7 @@ def register():
 
         cur.execute(sql, args)
         conn.commit()
-        return redirect(url_for('logSuccess', message = 'New Account Created'))
+        return redirect(url_for('logMessage', message = 'New Account Created!'))
 
     return render_template('Registration.html')
 
@@ -69,13 +86,18 @@ def login():
         user = request.form['user']
         password = request.form['pasw']
 
+        # if re.match(regTest, password):
+        #     print("Passed Test")
+        # else:
+        #     print("Didn't Pass Test")
+
+
+
         # query pass
         cur.execute("""
             SELECT username FROM user_info WHERE username = %s
         """, [user])
         conn.commit()
-
-        # if user exists > if pass > else
         
         userQuery = cur.fetchone()
         print(type(userQuery))
@@ -88,30 +110,23 @@ def login():
             passQuery = cur.fetchone() 
             bytePass = passQuery[0].tobytes()
             finalPass = decrypt.decrypt(bytePass)
-            print(finalPass)
+            
             if password == finalPass.decode('utf-8'):
                 print('Password matches!')
                 return redirect(url_for('index'))
             else:
                 print('Password does not match.')
-                return redirect(url_for('login'))
+                return redirect(url_for('logMessage', message = 'Incorrect Password'))
         else:
             print('User does not exist.')
-            return redirect(url_for('login'))
-        # test password
-        # if password == finalPass.decode('utf-8'):
-        #     return 'Login Success!'
-        # else:
-        #     print('retry')
-        #     return redirect(url_for('login'))
+            return redirect(url_for('logMessage', message = 'User does not exist'))
 
     return render_template('Login.html')
 
 
 @app.route("/login/<message>")
-def logSuccess(message):
+def logMessage(message):
     return render_template('Login.html', message = message)
-
 
 
 if __name__ == '__main__':

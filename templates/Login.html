@@ -19,11 +19,11 @@
             <input type="password" name="pasw" id="lastBox" class= "Hero">
             <br>
             {% if message %}
-            <p>{{ message }}!</p>
+            <p>{{ message }}</p>
             {% endif %}
             <input type="submit" value="Submit" class="Hero">
             <p>Dont have an account?</p>
-            <a href="Registration.html">Register</a>
+            <a href="{{ url_for('register') }}">Register</a>
         </form>
      </div>
 </body>
