@@ -37,7 +37,7 @@ app = Flask(__name__)
 # decrypt message
 @app.route("/")
 def index():
-    return render_template('Main-Page.html')
+    return render_template('admin.html')
 
 @app.route("/purchase")
 def purchase():
@@ -51,7 +51,6 @@ def parts():
 def customize():
     return render_template("Customised-Bikes.html")
 
-<<<<<<< HEAD
 # @app.route("/register", methods=['GET', 'POST'])
 # def register():
 #     if request.method == 'POST':
@@ -87,7 +86,7 @@ def customize():
 #         conn.commit()
 #         return redirect(url_for('logMessage', message = 'New Account Created!'))
 
-# #     return render_template('Registration.html')
+#     return render_template('Registration.html')
 
 # @app.route("/login", methods=["GET","POST"])
 # def login():
@@ -95,51 +94,6 @@ def customize():
 #         # check credentials
 #         user = request.form['user']
 #         password = request.form['pasw']
-=======
-@app.route("/register", methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        user = request.form['user']
-        password = request.form['pasw']
-        email = request.form['email']
-        phone = request.form['phone']
-        address = request.form['address']
-
-        enc_pass = cipher.encrypt(bytes(password, 'utf-8'))
-
-        if re.search(r'\d', password):
-            print('Has digit')
-            if re.search(r'[A-Z]', password):
-                print('Has upper')
-            else:
-                return redirect(url_for('logMessage', password = password, message = 'No upper'))
-            if re.search(r'[!@#$%^&+=]', password):
-                print('Has symbol')
-            else:
-                print('no symbol')
-        else:
-            print('No digit')
-
-#         # insert into db table
-        sql = """
-            INSERT INTO user_info (email, username, password, phone, address)
-            VALUES (%s, %s, %s, %s, %s)
-        """
-        args = email, user, enc_pass, phone, address
-
-        cur.execute(sql, args)
-        conn.commit()
-        return redirect(url_for('logMessage', message = 'New Account Created!'))
-
-    return render_template('Registration.html')
-
-@app.route("/login", methods=["GET","POST"])
-def login():
-    if request.method == 'POST':
-        # check credentials
-        user = request.form['user']
-        password = request.form['pasw']
->>>>>>> b4dcc6152b99226dc9cc9b5a4d33edb2e0721abd
 
         
 
