@@ -1,5 +1,4 @@
 import psycopg2
-import re
 from flask import Flask, render_template, request, url_for, redirect, session
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
@@ -33,7 +32,7 @@ cur = conn.cursor()
 pr_key = RSA.import_key(open('private.pem', 'r').read())
 pu_key = RSA.import_key(open('public.pem', 'r').read())
 
-# encrypt/decrypt obj
+# # encrypt/decrypt obj
 cipher = PKCS1_OAEP.new(key=pu_key)
 decrypt = PKCS1_OAEP.new(key=pr_key)
                                                                                                                                         
@@ -72,7 +71,6 @@ def register():
         address = request.form['address']
 
         enc_pass = cipher.encrypt(bytes(password, 'utf-8'))
-
 
         # insert into db table
         sql = """
