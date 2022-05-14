@@ -18,8 +18,9 @@
             <p>Create a Password:</p>
             <label for=""><em>Must contain 8 characters with one number, and one special character</em></label>
             <br>
-            {% if password %}
-            <input type="password" name="pasw" id="lastBox" class= "Hero" value="{{ password }}" required>
+            <input type="password" name="pasw" id="lastBox" size="8" pattern="(?=.*\d)(?=.*[@#$%^&+*!=])(?=.*[a-z])(?=.*[A-Z]).{8,}" class= "Hero" value="" required>
+            {% if message %}
+            <p>{{ message }}</p>
             {% endif %}
             <br>
             <p>Enter a Phone Number:</p>
@@ -31,7 +32,7 @@
             <p>Enter your Address:</p>
             <input type="text" name="address" id="lastBox" class= "Hero" required>
             <br>
-            <input type="submit" value="Submit" class= "Hero">
+            <input id="sub" type="submit" value="Submit" class= "Hero">
         </form>
     </div>
 </body>

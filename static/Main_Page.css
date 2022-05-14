@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
 
+
+#usrnm {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+	margin: 5px;
+}
+
+#usrnm a {
+	text-decoration: none;
+	color: black;
+	padding: 3px;
+	border-radius: 3px;
+	background-color: #D3D3D3;
+}
+
 .trial
 {
     border: 1px solid #ccc;
