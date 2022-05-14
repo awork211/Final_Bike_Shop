@@ -1,11 +1,13 @@
 import psycopg2
 import re
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, session
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
 from binascii import hexlify
 
 app = Flask(__name__)
+
+app.secret_key = 'bikeshopkey'
 
 # connect database
 conn = psycopg2.connect(
@@ -26,6 +28,8 @@ cur = conn.cursor()
 # """)
 # conn.commit()
 
+
+
 pr_key = RSA.import_key(open('private.pem', 'r').read())
 pu_key = RSA.import_key(open('public.pem', 'r').read())
 
@@ -37,7 +41,14 @@ decrypt = PKCS1_OAEP.new(key=pr_key)
 # decrypt message
 @app.route("/")
 def index():
-    return render_template('Main-Page.html')
+    # products query here
+    if "user" in session:
+        user = session['user']
+        print(session)
+        return render_template('Main-Page.html', user = user)
+    else:
+        print(session)
+        return render_template('Main-Page.html')
 
 @app.route("/purchase")
 def purchase():
@@ -62,20 +73,8 @@ def register():
 
         enc_pass = cipher.encrypt(bytes(password, 'utf-8'))
 
-        if re.search(r'\d', password):
-            print('Has digit')
-            if re.search(r'[A-Z]', password):
-                print('Has upper')
-            else:
-                return redirect(url_for('logMessage', password = password, message = 'No upper'))
-            if re.search(r'[!@#$%^&+=]', password):
-                print('Has symbol')
-            else:
-                print('no symbol')
-        else:
-            print('No digit')
 
-#         # insert into db table
+        # insert into db table
         sql = """
             INSERT INTO user_info (email, username, password, phone, address)
             VALUES (%s, %s, %s, %s, %s)
@@ -95,10 +94,6 @@ def login():
         user = request.form['user']
         password = request.form['pasw']
 
-        
-
-
-
         # query pass
         cur.execute("""
             SELECT username FROM user_info WHERE username = %s
@@ -106,7 +101,7 @@ def login():
         conn.commit()
         
         userQuery = cur.fetchone()
-        print(type(userQuery))
+        
         cur.execute("""
             SELECT password FROM user_info WHERE username = %s
         """, [user])
@@ -119,6 +114,7 @@ def login():
             
             if password == finalPass.decode('utf-8'):
                 print('Password matches!')
+                session['user'] = user
                 return redirect(url_for('index'))
             else:
                 print('Password does not match.')
@@ -126,13 +122,21 @@ def login():
         else:
             print('User does not exist.')
             return redirect(url_for('logMessage', message = 'User does not exist'))
-
-#     return render_template('Login.html')
+    return render_template('Login.html')
 
 
 @app.route("/login/<message>")
 def logMessage(message):
     return render_template('Login.html', message = message)
+
+@app.route("/register/<message>")
+def regMessage(message):
+    return render_template('Registration.html', message = message)
+
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
+    return redirect(url_for('login'))
 
 
 if __name__ == '__main__':

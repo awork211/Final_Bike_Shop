@@ -13,6 +13,12 @@
     </center>
     <br>
     <header>
+        {% if user %}
+        <div id="usrnm">
+            <p>Logged in as: <strong>{{ user }}</strong></p>
+            <p><a href="/logout">Logout</a></p>
+        </div>
+        {% endif %}
         <ul class = "trial">
             <li><a href="/">Home</a></li>
             <li><a href="/purchase">Purchase</a></li>
