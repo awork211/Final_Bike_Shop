@@ -15,8 +15,6 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
-
-
 pr_key = RSA.import_key(open('private.pem', 'r').read())
 pu_key = RSA.import_key(open('public.pem', 'r').read())
 
