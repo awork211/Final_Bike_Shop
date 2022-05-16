@@ -10,22 +10,10 @@ app.secret_key = 'bikeshopkey'
 
 # connect database
 conn = psycopg2.connect(
-    host = 'localhost',
-    database = 'user_info'
+    "dbname=analysis user=postgres host=localhost password=mariah10"
 )
 
 cur = conn.cursor()
-
-# cur.execute("""
-# CREATE TABLE user_info (
-#    email varchar(200),
-#    username varchar(200),
-#    password BYTEA,
-#    phone varchar(10),
-#    address varchar(300)
-#     );
-# """)
-# conn.commit()
 
 
 
@@ -38,7 +26,7 @@ decrypt = PKCS1_OAEP.new(key=pr_key)
                                                                                                                                         
 
 # decrypt message
-@app.route("/")
+@app.route("/main")
 def index():
     # products query here
     if "user" in session:
@@ -61,7 +49,7 @@ def parts():
 def customize():
     return render_template("Customised-Bikes.html")
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         user = request.form['user']
@@ -127,7 +115,7 @@ def login():
 def logMessage(message):
     return render_template('Login.html', message = message)
 
-@app.route("/register/<message>")
+@app.route("/<message>")
 def regMessage(message):
     return render_template('Registration.html', message = message)
 
