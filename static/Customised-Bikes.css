@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
-
+body
+{
+    font-family: 'Lora', serif;
+}
 .trial
 {
     border: 1px solid #ccc;
     border-width: 2px;
     list-style: none;
     margin: 0;
-    padding:0;
+    padding: 0;
     text-align: center;
     border-radius: 35px;
 }
-.trial li{
+.trial li
+{
     display: inline;
 }
-.trial a
-{
+.trial a{
 display: inline-block;
 padding: 10px;
+text-decoration: none;
 }
 .trial a:hover
 {
@@ -25,7 +29,7 @@ color: white;
 }
 .heroes
 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../static/images/bike_shop_demo.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../static/images/final_bike_background.jpg);
     height: 350px;
     width: 100%;
     background-position: center;
@@ -90,16 +94,12 @@ color: white;
         cursor: pointer;
         border-radius: 16px;
     }
-.tired
-{
-    height: 450px;
-	width: 675px;
-}
+    .tired
+    {
+        height: 300px;
+        width: 300px;
+    }
 footer{
 	background-color: black;
 	color: white;
-}
-body, html
-{
-    font-family: 'Lora', serif;
 }

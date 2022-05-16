@@ -26,12 +26,19 @@
     text-align: center;
     border-radius: 35px;
 }
-.trial li{
+.trial li
+{
     display: inline;
 }
-.trial a{
+.trial a
+{
 display: inline-block;
 padding: 10px;
+}
+.trial a:hover
+{
+background-color: grey;
+color: white;
 }
 .heroes{
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../static/images/bike_wallpaper.jpg);
