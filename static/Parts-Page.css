@@ -13,9 +13,15 @@
 .trial li{
     display: inline;
 }
-.trial a{
+.trial a
+{
 display: inline-block;
 padding: 10px;
+}
+.trial a:hover
+{
+background-color: grey;
+color: white;
 }
 footer{
 	background-color: black;
@@ -23,7 +29,7 @@ footer{
 }
 .cavalier
 {
-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../the_new_bike_background.jpg);
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../static/images/the_new_bike_background.jpg);
 height: 350px;
 width: 100%;
 background-position: center;
