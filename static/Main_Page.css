@@ -64,7 +64,6 @@ text-align: center;
 {
     display: flex;
 	flex-direction: row;
-	margin-right: 20%;
 }
 .tired
 {
@@ -133,7 +132,7 @@ text-align: center;
 }
 .the_heroes
 {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../Bike_Background.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../static/images/Bike_Background.jpg);
 height: 500px;
 width: 100%;
 background-position: center;
