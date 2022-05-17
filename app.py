@@ -10,8 +10,9 @@ app.secret_key = 'bikeshopkey'
 
 # connect database
 conn = psycopg2.connect(
-    "dbname=analysis user=postgres host=localhost password=mariah10"
+    "dbname=analysis user=postgres host=localhost password=Eclipse70!"
 )
+
 
 cur = conn.cursor()
 
