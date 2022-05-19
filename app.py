@@ -35,6 +35,7 @@ def index():
     else:
         print(session)
         return render_template('Main-Page.html')
+        
 
 @app.route("/purchase")
 def purchase():

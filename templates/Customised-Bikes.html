@@ -12,13 +12,13 @@
         <img src="../static/images/Harajuku_Final.jpeg" height="175px", width="550px">
         </center>
         <br>
+    <header>
         {% if user %}
         <div id="usrnm">
             <p>Logged in as: <strong>{{ user }}</strong></p>
             <p><a href="/logout">Logout</a></p>
         </div>
         {% endif %}
-    <header>
         <ul class = "trial">
             <li><a href='/main'>Home</a></li>
             <li><a href="purchase">Prebuilt</a></li>
