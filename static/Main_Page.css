@@ -8,6 +8,11 @@
 	margin: 5px;
 }
 
+.table {
+	margin: auto;
+	width: 80% !important; 
+ }
+
 #usrnm a {
 	text-decoration: none;
 	color: black;
