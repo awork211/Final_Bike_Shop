@@ -16,6 +16,8 @@ conn = psycopg2.connect(
     database = 'user_info'
 )
 
+
+
 cur = conn.cursor()
 
 # add users table
@@ -52,8 +54,6 @@ decrypt = PKCS1_OAEP.new(key=pr_key)
 # conn.commit()
 
 
-
-# decrypt message
 @app.route("/", methods=["GET","POST"])
 def index():
     # products query here
@@ -169,6 +169,7 @@ def delete_item(name):
         session['cart_total_price'] = cart_total_price
     return redirect(url_for('index')) #change url to cart
 
+
 @app.route("/purchase")
 def purchase():
     return render_template('Purchase.html')
@@ -181,7 +182,7 @@ def parts():
 def customize():
     return render_template("Customised-Bikes.html")
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         user = request.form['user']
@@ -247,7 +248,7 @@ def login():
 def logMessage(message):
     return render_template('Login.html', message = message)
 
-@app.route("/register/<message>")
+@app.route("/<message>")
 def regMessage(message):
     return render_template('Registration.html', message = message)
 

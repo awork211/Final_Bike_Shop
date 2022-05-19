@@ -1,31 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bikeshop.css') }}">
+    <link rel="stylesheet" href= "../static/Customised-Bikes.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customised-Bikes</title>
 </head>
 <body>
+    <center>
+        <img src="../static/images/Harajuku_Final.jpeg" height="175px", width="550px">
+        </center>
+        <br>
     <header>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/purchase">Purchase</a></li>
-            <li><a href="/parts">Parts</a></li>
-            <li><a href="/customize">Customise</a></li>
+        {% if user %}
+        <div id="usrnm">
+            <p>Logged in as: <strong>{{ user }}</strong></p>
+            <p><a href="/logout">Logout</a></p>
+        </div>
+        {% endif %}
+        <ul class = "trial">
+            <li><a href='/main'>Home</a></li>
+            <li><a href="purchase">Prebuilt</a></li>
+            <li><a href="parts">Parts</a></li>
+            <li><a href="customize">Customise</a></li>
         </ul>
     </header>
-    <div>
-
+    <br>
+    <div class = "heroes">
+    <div class = "heroes_txt">
+    <h1>Want to build your own customised bike?</h1>
+    <h2>Please pick one of each part!</h2>
     </div>
+    </div>
+    <br>
+    <div>
+        <center>
+            <h1><u>Select a Handlebar:</u></h1>
+        </center>
+    </div>
+    <br>
+        <div class = "fall">
+        <div class = "sword">
+            <div class = "lance">
+        <h3>Handlebar #1</h3>
+        <br>
+        <img src="../static/images/first_bike_handlebar.jpg" class ="tired">
+        <h4>Aluminum Handlebar for our bikes.</h4>
+        <br>
+        <button class = "practise">£129.99</button>
+        <br>
+        </div>
+        </div>
+        <br>
+        <div class = "sword">
+        <div class = "lance">
+        <h3>Handlebar #2</h3>
+        <br>
+        <img src="../static/images/second_bike_handlebar.jpg" class ="tired">
+        <h4>Stainless Steel Handlebar for our bikes.</h4>
+        <br>
+        <button class = "practise">£179.99</button>
+        <br>
+        </div>
+        </div>
+        <br>
+        <div class = "sword">
+            <div class = "lance">
+        <h3>Handlebar #3</h3>
+        <br>
+        <img src="../static/images/final_bike_handlebar.jpg"class = "tired">
+        <h4>Carbon Fibre Handlebar for our bikes.</h4>
+        <br>
+        <button class = "practise">£229.99</button>
+        <br>
+        </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div>
+        <center><h1><u>Select a Frame:</u></h1></center>
+        <br>
+        <div class = "fall">
+            <div class = "sword">
+                <div class = "lance">
+        <h3>Frame #1</h3>
+        <br>
+        <img src="../static/images/the_first_bike_frame.jpg" class ="tired">
+        <h4>Aluminum Frame for our bikes.</h4>
+        <br>
+        <button class = "practise">£299.99</button>
+        <br>
+        </div>
+        </div>
+        <br>
+        <div class = "sword">
+        <div class = "lance">
+        <h3>Frame #2</h3>
+        <br>
+        <img src="../static/images/final_bike_frame.jpg" class ="tired">
+        <h4>Stainless Steel Frame for our bikes.</h4>
+        <br>
+        <button class = "practise">£399.99</button>
+        <br>
+        </div>
+        </div>
+        <br>
+        <div class = "sword">
+            <div class = "lance">
+        <h3>Frame #3</h3>
+        <br>
+        <img src="../static/images/first_bike_frames.jpg" class ="tired">
+        <h4>Carbon Fibre Frame for our bikes.</h4>
+        <br>
+        <button class = "practise">£499.99</button>
+        <br>
+        </div>
+        </div>
+    </div>
+    <br>
+    <center><h1><u>Select the Wheels:</u></h1></center>
+        <br>
+        <div class = "fall">
+        <div class = "sword">
+        <div class = "lance">
+        <h3>Wheel Set #1</h3>
+        <br>
+        <img src="../static/images/new_wheels.jpg" class ="tired">
+        <h4>A set of Aluminum Wheels for our bikes.</h4>
+        <br>
+        <button class = "practise">£99.99</button>
+        <br>
+    </div>
+</div>
+        <br>
+        <div class = "sword">
+            <div class = "lance">
+        <h3>Wheel Set #2</h3>
+        <br>
+        <img src="../static/images/Elite_Wheels.jpg" class ="tired">
+        <h4>A set of Stainless Steel wheels for our bikes.</h4>
+        <br>
+        <button class ="practise">£159.99</button>
+        <br>
+    </div>
+</div>
+<br>
+<div class = "sword">
+    <div class = "lance">
+        <h3>Wheel Set #3</h3>
+        <br>
+        <img src="../static/images/pro_bike_wheels.jpg" class ="tired">
+        <h4>A set of Carbon Fibre Wheels for our bikes.</h4>
+        <br>
+        <button class = "practise">£199.99</button>
+        <br>
+    </div>
+    </div>
+    </div>
+    <br>
+    <center><h3>Don't want to build a bike? Checkout our <a href = "Purchase.html">Prebuilt Bikes!</a></h3></center>
+    <br>
     <footer>
-        <ul>
-            <li><a href="Main-Page.html">Home</a></li>
-            <li><a href="Purchase.html">Purchase</a></li>
-            <li><a href="Parts-Page.html">Parts</a></li>
-            <li><a href="Customised-Bikes.html">Customise</a></li>
-        </ul>
+        <br>
+        <center>
+        <h3>©Copyright 2022 for CSET-180 by Aaron Work, Brian Sanvicente, and Justice Kipp</h3>
+        <br>
     </footer>
 </body>
 </html>

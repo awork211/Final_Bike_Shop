@@ -16,12 +16,19 @@
         <img src="../static/images/Harajuku_Final.jpeg" height="175px", width="550px">
         </center>
         <br>
+        
     <header>
+        {% if user %}
+        <div id="usrnm">
+            <p>Logged in as: <strong>{{ user }}</strong></p>
+            <p><a href="/logout">Logout</a></p>
+        </div>
+        {% endif %}
         <ul class = "trial">
-            <li><a href="/">Home</a></li>
-            <li><a href="/purchase">Purchase</a></li>
-            <li><a href="/parts">Parts</a></li>
-            <li><a href="/customize">Customise</a></li>
+            <li><a href='/main'>Home</a></li>
+            <li><a href="purchase">Prebuilt</a></li>
+            <li><a href="parts">Parts</a></li>
+            <li><a href="customize">Customise</a></li>
         </ul>
     </header>
         <br>
@@ -151,6 +158,9 @@
                         </div>
                     </div>
     </div>
+    <br>
+    <center><h3>Want to build your own bike? Checkout our <a href = "customize">Custom Bike Service!</a></h3></center>
+    <br>
         <footer>
             <br>
             <center>

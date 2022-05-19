@@ -13,11 +13,17 @@
         </center>
         <br>
         <header>
+            {% if user %}
+        <div id="usrnm">
+            <p>Logged in as: <strong>{{ user }}</strong></p>
+            <p><a href="/logout">Logout</a></p>
+        </div>
+        {% endif %}
             <ul class = "trial">
-                <li><a href="Main-Page.html">Home</a></li>
-                <li><a href="Purchase.html">Purchase</a></li>
-                <li><a href="Parts-Page.html">Parts</a></li>
-                <li><a href="Customised-Bikes.html">Customise</a></li>
+                <li><a href='/admin'>Home</a></li>
+                <li><a href="purchase">Prebuilt</a></li>
+                <li><a href="parts">Parts</a></li>
+                <li><a href="customize">Customise</a></li>
             </ul>
             <br>
         <div class = "heroes">
