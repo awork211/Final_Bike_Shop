@@ -16,13 +16,13 @@
 
         {% if 'user' in session %}
         <div id="usrnm">
-            <p>Logged in as: <strong>{{ user }}</strong></p>
+            <p>Logged in as: <strong>{{ session['user'] }}</strong></p>
             <p><a href="/logout">Logout</a></p>
         </div>
         {% endif %}
         <ul class = "trial">
             <li><a href="/">Home</a></li>
-            <li><a href="/purchase">Purchase</a></li>
+            <li><a href="/prebuilt">Prebuilt</a></li>
             <li><a href="/parts">Parts</a></li>
             <li><a href="/customize">Customise</a></li>
         </ul>
@@ -56,7 +56,7 @@
                         <div class="media">
                             <a href="#" class="thumbnail pull-left" style="padding: 10px;"><img class="media-object" src="../static/images/{{session['item_cart'][key]['image']}}" style="width: 72px; height: 72px;"></a>
                             <div class="media-body">
-                                <h4 class="media-heading"><a href="#">{{ session['item_cart'][key]['name'] }}</a></h4>
+                                <h4 class="media-heading"><a href="#"></a></h4>
                             </div>
                         </div>
                     </td>
@@ -73,7 +73,7 @@
                 
                 <tr>
                     <td colspan="3"><h3>Total</h3></td>
-                    <td colspan="2" class="text-right"><h3><strong>{{ session['cart_total_price'] }}</strong></h3></td>
+                    <td colspan="2" class="text-right"><h3><strong>{{ "{:.2f}".format(session['cart_total_price']) }}</strong></h3></td>
                 </tr>
                 <tr>
                     <td>

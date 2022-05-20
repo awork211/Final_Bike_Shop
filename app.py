@@ -34,6 +34,8 @@ cur = conn.cursor()
 
 
 
+
+
 pr_key = RSA.import_key(open('private.pem', 'r').read())
 pu_key = RSA.import_key(open('public.pem', 'r').read())
 
@@ -78,7 +80,8 @@ def addToCart():
     if request.method == 'POST':
         quantity = request.form['quantity']
         itemName = request.form['itemName']
-        
+        print(itemName)
+        print(session['user'])
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
         cur.execute("""
@@ -88,7 +91,7 @@ def addToCart():
         product = cur.fetchone()
 
         # creating item for cart
-        itemArray = { product['name']: {'quantity': quantity, 'price': product['price'], 'image': product['image'], 'total_price': product['price'] * int(quantity)}}
+        itemArray = { product['name']: {'quantity': quantity, 'price': product['price'], 'image': product['image'], 'total_price': product['price'] * int(quantity), 'name': product['name']}}
         print(itemArray, 'printed')
         cart_total_quantity = 0
         cart_total_price = 0
@@ -105,12 +108,11 @@ def addToCart():
         
         if 'item_cart' in session:
             print('in session')
-            # print(session['item_cart'][product['name']])
             if product['name'] in session['item_cart']:
                 # add cart properties
                 for key, value in session['item_cart'].items():
                     if product['name'] == key:
-                        print(session['item_cart'][key])
+                        print(session['item_cart'], 'item cart')
                         old_quantity = session['item_cart'][key]['quantity']
                         total_quantity = int(old_quantity) + int(quantity)
                         session['item_cart'][key]['quantity'] = total_quantity
@@ -132,7 +134,7 @@ def addToCart():
         # set totals in session
         session['cart_total_price'] = cart_total_price
         session['cart_total_quantity'] = cart_total_quantity
-        
+        print(session['item_cart'])
         return render_template('cart.html')
     elif request.method == 'GET':
         return render_template('cart.html')
@@ -166,23 +168,44 @@ def delete_item(name):
         session.pop('item_cart', None)
     else:
         session['cart_total_quantity'] = cart_total_quantity
-        session['cart_total_price'] = cart_total_price
-    return redirect(url_for('index')) #change url to cart
+        session['cart_total_price'] = float("{:.2f}".format(cart_total_price))
+    return redirect(url_for('addToCart')) #change url to cart
 
 
-@app.route("/purchase")
-def purchase():
-    return render_template('Purchase.html')
+@app.route("/prebuilt")
+def prebuilt():
+     # products query here
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cur.execute("""
+        SELECT * FROM products WHERE category = 'complete'
+    """)
+    conn.commit()
+    products = cur.fetchall()
+        
+    
+    if "user" in session:
+        user = session['user']
+        print(session)
+        return render_template('Prebuilt.html', user = user, products = products)
+    else:
+        print(session)
+        return render_template('Prebuilt.html', products = products)
 
 @app.route("/parts")
 def parts():
-    return render_template('Parts-Page.html')
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cur.execute("""
+        SELECT * FROM products WHERE name LIKE 'Frame%'
+    """)
+    conn.commit()
+    frames = cur.fetchall()
+    return render_template('Parts-Page.html', frames = frames)
 
 @app.route("/customize")
 def customize():
     return render_template("Customised-Bikes.html")
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         user = request.form['user']
@@ -248,7 +271,7 @@ def login():
 def logMessage(message):
     return render_template('Login.html', message = message)
 
-@app.route("/<message>")
+@app.route("/register/<message>")
 def regMessage(message):
     return render_template('Registration.html', message = message)
 
