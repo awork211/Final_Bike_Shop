@@ -20,10 +20,10 @@
         </div>
         {% endif %}
         <ul class = "trial">
-            <li><a href='/main'>Home</a></li>
-            <li><a href="purchase">Prebuilt</a></li>
-            <li><a href="parts">Parts</a></li>
-            <li><a href="customize">Customise</a></li>
+            <li><a href='/'>Home</a></li>
+            <li><a href="/prebuilt">Prebuilt</a></li>
+            <li><a href="/parts">Parts</a></li>
+            <li><a href="/customize">Customise</a></li>
         </ul>
     </header>
     <br>
@@ -117,7 +117,8 @@
     <div>
         <center><h1><u>Frames</u></h1></center>
         <br>
-        <div class = "fall">
+        
+        <form method="POST" id="addForm" action="{{ url_for('addToCart') }}">
             <div class = "sword">
                 <div class = "lance">
         <h3>Frame #1</h3>
@@ -125,10 +126,13 @@
         <img src="../static/images/the_first_bike_frame.jpg" class ="tired">
         <h4>Aluminum Replacement Frame for our bikes.</h4>
         <br>
-        <button class = "practise">£299.99</button>
+        <button type="submit" class = "practise">£299.99</button>
         <br>
         </div>
         </div>
+        <input type="hidden" name="quantity" value="1" size="2">
+        <input type="hidden" value="Frame #1" name="itemName" />
+        </form>
         <div class = "sword">
         <div class = "lance">
         <h3>Frame #2</h3>
@@ -152,7 +156,7 @@
         <br>
         </div>
         </div>
-    </div>
+    
     <br>
     <footer>
         <br>

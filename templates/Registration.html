@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="regBox">
-        <form action="http://127.0.0.1:5000" method="POST">
+        <form action="http://127.0.0.1:5000/register" method="POST">
             <h1>Register</h1>
             <br>
             <p>Create a Username:</p>
@@ -18,7 +18,7 @@
             <p>Create a Password:</p>
             <label for=""><em>Must contain 8 characters with one number, and one special character</em></label>
             <br>
-            <input type="password" name="pasw" id="lastBox" size="8" class= "Hero" value="" required>
+            <input type="password" name="pasw" id="lastBox" size="8" pattern="(?=.*\d)(?=.*[@#$%^&+*!=])(?=.*[a-z])(?=.*[A-Z]).{8,}" class= "Hero" value="" required>
             {% if message %}
             <p>{{ message }}</p>
             {% endif %}

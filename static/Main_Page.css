@@ -21,30 +21,43 @@
 	background-color: #D3D3D3;
 }
 
+#regLog {
+	justify-self: left;
+	position: absolute;
+	margin-left: 5px;
+	left: 0;
+}
+
+.other {
+	text-align: center;
+}
+
 .trial
 {
-    border: 1px solid #ccc;
-    border-width: 2px;
     list-style: none;
     margin: 0;
     padding:0;
     text-align: center;
-    border-radius: 35px;
+	display: flex;
+	justify-content: center;
 }
-.trial li
-{
-    display: inline;
-}
+
 .trial a
 {
-display: inline-block;
 padding: 10px;
+margin: 0px 3px;
+text-decoration: none;
+font-size: 20px;
+color: black;
 }
 .trial a:hover
 {
-background-color: grey;
-color: white;
+color: #191919;
+border-bottom: 1px solid black;
 }
+
+
+
 .heroes{
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../static/images/bike_wallpaper.jpg);
 height: 500px;
@@ -65,11 +78,7 @@ text-align: center;
   font-size: larger;
 
 }
-.test
-{
-    display: flex;
-	flex-direction: row;
-}
+
 .tired
 {
 	height: 370px;
